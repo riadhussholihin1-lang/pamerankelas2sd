@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEAM Exhibition - Vertical Greens | SD Islam Al-Azhar BSD@Cileungsi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Fredoka & Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- QRCode.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        popYellow: '#FFDE59',
+                        popPink: '#FF66C4',
+                        popBlue: '#5CE1E6',
+                        popGreen: '#4ADE80',
+                        popEmerald: '#10B981',
+                        popOrange: '#FF914D',
+                        popPurple: '#C38FFF',
+                        popDark: '#111827'
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'pop': '5px 5px 0px #111827',
+                        'pop-lg': '8px 8px 0px #111827',
+                        'pop-sm': '3px 3px 0px #111827',
+                        'pop-hover': '2px 2px 0px #111827'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #F0FDF4;
+            background-image: radial-gradient(#4ADE80 0.8px, transparent 0.8px), radial-gradient(#5CE1E6 0.8px, #F0FDF4 0.8px);
+            background-size: 28px 28px;
+            background-position: 0 0, 14px 14px;
+        }
+        .pop-card {
+            border: 3.5px solid #111827;
+            box-shadow: 6px 6px 0px #111827;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .pop-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px #111827;
+        }
+        .pop-button {
+            border: 3px solid #111827;
+            box-shadow: 4px 4px 0px #111827;
+            transition: all 0.15s ease;
+        }
+        .pop-button:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #111827;
+        }
+        .pop-button:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #111827;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F0FDF4;
+            border-left: 2px solid #111827;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10B981;
+            border: 2px solid #111827;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-12 text-popDark selection:bg-popYellow">
+
+    <!-- Header Section dengan Barcode Vercel -->
+    <header class="max-w-6xl mx-auto pt-8 px-4 mb-8">
+        <div class="pop-card bg-popGreen p-6 rounded-3xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+            <!-- Decorative SVG Plant Leaves Floating Shapes -->
+            <div class="absolute -right-6 -bottom-6 opacity-25 pointer-events-none">
+                <svg width="220" height="220" viewBox="0 0 100 100">
+                    <path d="M50 10 C30 40 10 60 50 90 C90 60 70 40 50 10 Z" fill="#FFDE59" stroke="#111827" stroke-width="4"/>
+                    <path d="M50 10 L50 90" stroke="#111827" stroke-width="3"/>
+                </svg>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-5 z-10 text-center sm:text-left">
+                <div class="w-20 h-20 bg-popYellow rounded-2xl border-4 border-popDark shadow-pop flex items-center justify-center text-3xl text-popDark transform -rotate-3 hover:rotate-6 transition-transform cursor-pointer shrink-0">
+                    <i class="fa-solid fa-seedling text-emerald-700"></i>
+                </div>
+                <div>
+                    <div class="flex flex-wrap justify-center sm:justify-start items-center gap-2 mb-1">
+                        <span class="bg-popDark text-popYellow font-fredoka px-3 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                            SD ISLAM AL-AZHAR BSD@CILEUNGSI
+                        </span>
+                        <span class="bg-white text-popDark font-fredoka px-2.5 py-0.5 rounded-full text-xs font-bold border-2 border-popDark">
+                            KELAS 2 SD
+                        </span>
+                    </div>
+                    <h1 class="text-2xl md:text-4xl font-fredoka font-bold text-popDark">PAMERAN STEAM: VERTICAL GREENS 🌿</h1>
+                    <p class="text-sm font-semibold text-gray-900 opacity-90">"The Floating Plant Experiment" & Portofolio Proyek</p>
+                </div>
+            </div>
+
+            <!-- KOTAK BARCODE/QR CODE WEBSITE (Disesuaikan ke pamerankelas2sd.vercel.app) -->
+            <div class="pop-card bg-white p-3.5 rounded-2xl flex flex-col items-center justify-center text-center z-10 shrink-0">
+                <div id="headerQrcode" class="p-1.5 bg-white border-2 border-popDark rounded-xl mb-2"></div>
+                <span class="font-fredoka text-[11px] font-bold text-popDark bg-popYellow px-2 py-0.5 rounded-md border border-popDark">
+                    pamerankelas2sd.vercel.app
+                </span>
+                <p class="text-[10px] font-bold text-gray-500 mt-1"><i class="fa-solid fa-qrcode text-popPink mr-1"></i>Pindai Barcode Web</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Grid Dashboard -->
+    <main class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- ================= KOTAK PERTAMA: VIDEO (V) ================= -->
+        <section class="pop-card bg-white rounded-3xl p-6 flex flex-col justify-between relative group">
+            <div class="absolute -top-4 left-6 bg-popPink text-white font-fredoka text-sm font-bold px-4 py-1.5 rounded-xl border-2 border-popDark shadow-pop-sm flex items-center gap-2">
+                <i class="fa-solid fa-video"></i> KOTAK [V] - VIDEO PROYEK
+            </div>
+
+            <div class="mt-4 mb-4">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <h2 class="text-2xl font-fredoka font-bold text-popDark">Video Dokumentasi STEAM</h2>
+                        <p class="text-xs text-gray-600 font-semibold mt-1">Saksikan keseruan murid kelas 2 dalam pembuatan & percobaan Vertical Greens.</p>
+                    </div>
+                    <span class="bg-popPurple/30 border-2 border-popDark font-fredoka text-xs px-2.5 py-1 rounded-lg font-bold">
+                        <i class="fa-brands fa-google-drive text-green-600"></i> Google Drive
+                    </span>
+                </div>
+
+                <!-- Frame Video / Placeholder Drive -->
+                <div class="relative w-full h-56 bg-slate-900 rounded-2xl border-3 border-popDark overflow-hidden shadow-pop-sm mb-4 flex items-center justify-center group/player">
+                    <iframe id="videoIframe" class="w-full h-full border-0 hidden" allow="autoplay" allowfullscreen></iframe>
+                    
+                    <div id="videoPlaceholder" class="flex flex-col items-center justify-center p-6 text-center text-white">
+                        <div class="w-16 h-16 bg-popGreen rounded-full border-3 border-popDark flex items-center justify-center text-2xl mb-3 shadow-pop-sm animate-bounce text-popDark">
+                            <i class="fa-solid fa-play ml-1"></i>
+                        </div>
+                        <p class="font-fredoka text-base font-bold text-popYellow">Folder Video Dokumentasi Drive</p>
+                        <p class="text-xs opacity-80 mt-1 max-w-xs">Klik tombol di bawah untuk menyaksikan video praktik proyek Vertical Greens.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats & Action Button -->
+            <div>
+                <div class="flex items-center justify-between text-xs font-bold text-gray-600 mb-4 bg-popYellow/30 p-3 rounded-xl border-2 border-popDark">
+                    <span><i class="fa-solid fa-eye text-popPink mr-1"></i> Dokumentasi: <strong class="text-popDark">Proyek STEAM</strong></span>
+                    <span><i class="fa-solid fa-folder-open text-popEmerald mr-1"></i> Status: <strong class="text-green-600">Akses Terbuka</strong></span>
+                </div>
+
+                <a id="videoLinkBtn" href="https://drive.google.com/drive/folders/1qxfJjRjkdfwOWteGzRDOGQsFsU24rH1_?usp=drive_link" target="_blank" onclick="trackClick('Video Drive')" class="pop-button bg-popPink hover:bg-pink-400 text-white font-fredoka py-3 px-5 rounded-2xl text-center font-bold flex items-center justify-center gap-2 text-base w-full">
+                    <i class="fa-solid fa-circle-play"></i> Tonton Video Proyek di Drive
+                </a>
+            </div>
+        </section>
+
+        <!-- ================= KOTAK KEDUA: FOTO (F) ================= -->
+        <section class="pop-card bg-white rounded-3xl p-6 flex flex-col justify-between relative group">
+            <div class="absolute -top-4 left-6 bg-popBlue text-popDark font-fredoka text-sm font-bold px-4 py-1.5 rounded-xl border-2 border-popDark shadow-pop-sm flex items-center gap-2">
+                <i class="fa-solid fa-image"></i> KOTAK [F] - GALERI FOTO
+            </div>
+
+            <div class="mt-4 mb-4">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <h2 class="text-2xl font-fredoka font-bold text-popDark">Galeri Hasil Karya Murid</h2>
+                        <p class="text-xs text-gray-600 font-semibold mt-1">Dokumentasi foto kegiatan murid, pembuatan tanaman gantung, & percobaan irigasi.</p>
+                    </div>
+                    <span class="bg-popOrange/30 border-2 border-popDark font-fredoka text-xs px-2.5 py-1 rounded-lg font-bold">
+                        <i class="fa-brands fa-google-drive text-green-600"></i> Google Drive
+                    </span>
+                </div>
+
+                <!-- Frame Preview Folder Drive Galeri Foto -->
+                <div class="relative w-full h-56 bg-slate-900 rounded-2xl border-3 border-popDark overflow-hidden shadow-pop-sm mb-4 flex items-center justify-center">
+                    <iframe id="photoIframe" class="w-full h-full border-0 hidden" allow="autoplay" allowfullscreen></iframe>
+                    
+                    <div id="photoPlaceholder" class="flex flex-col items-center justify-center p-6 text-center text-white">
+                        <div class="w-16 h-16 bg-popBlue rounded-full border-3 border-popDark flex items-center justify-center text-2xl mb-3 shadow-pop-sm animate-bounce text-popDark">
+                            <i class="fa-solid fa-images ml-0.5"></i>
+                        </div>
+                        <p class="font-fredoka text-base font-bold text-popYellow">Folder Dokumentasi Foto Drive</p>
+                        <p class="text-xs opacity-80 mt-1 max-w-xs">Klik tombol di bawah untuk melihat album dokumentasi foto kegiatan murid.</p>
+                    </div>
+                </div>
+
+                <!-- Quick Badge Info -->
+                <div class="bg-popBlue/20 p-2.5 rounded-xl border-2 border-popDark flex items-center justify-between text-xs font-bold text-popDark mb-2">
+                    <span><i class="fa-solid fa-camera text-popOrange mr-1"></i> Folder: Dokumentasi Kegiatan</span>
+                    <span class="bg-popYellow px-2 py-0.5 rounded border border-popDark">HD Photos</span>
+                </div>
+            </div>
+
+            <!-- Stats & Action Button -->
+            <div>
+                <div class="flex items-center justify-between text-xs font-bold text-gray-600 mb-4 bg-popBlue/20 p-3 rounded-xl border-2 border-popDark">
+                    <span><i class="fa-solid fa-leaf text-emerald-600 mr-1"></i> Tema: <strong class="text-popDark">Floating Plant</strong></span>
+                    <span><i class="fa-solid fa-school text-popOrange mr-1"></i> Jenjang: <strong class="text-popDark">Kelas 2 SD</strong></span>
+                </div>
+
+                <a id="photoLinkBtn" href="https://drive.google.com/drive/folders/1XwzCBrPEqW_rWRWh7Cy7pflag5ftxKk8?usp=drive_link" target="_blank" onclick="trackClick('Galeri Foto Drive')" class="pop-button bg-popBlue hover:bg-cyan-300 text-popDark font-fredoka py-3 px-5 rounded-2xl text-center font-bold flex items-center justify-center gap-2 text-base w-full">
+                    <i class="fa-solid fa-folder-open"></i> Buka Galeri Foto di Drive
+                </a>
+            </div>
+        </section>
+
+        <!-- ================= KOTAK KETIGA: DESKRIPSI PRODUK / PROYEK (BAWAH) ================= -->
+        <section class="pop-card bg-white rounded-3xl p-6 md:col-span-2 relative group">
+            <div class="absolute -top-4 left-6 bg-popGreen text-popDark font-fredoka text-sm font-bold px-4 py-1.5 rounded-xl border-2 border-popDark shadow-pop-sm flex items-center gap-2">
+                <i class="fa-solid fa-book-open"></i> KOTAK [DESKRIPSI] - DETAIL PROYEK & PRESENTASI
+            </div>
+
+            <div class="mt-4 grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+                <!-- Left Details & Features -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="bg-popOrange text-white font-fredoka text-xs font-bold px-3 py-1 rounded-full border-2 border-popDark">
+                            STEAM MINI-GARDEN 2026
+                        </span>
+                        <span class="bg-popYellow text-popDark font-fredoka text-xs font-bold px-3 py-1 rounded-full border-2 border-popDark">
+                            <i class="fa-solid fa-droplet text-blue-600 mr-1"></i> Sistem Irigasi Tetes
+                        </span>
+                    </div>
+
+                    <h2 class="text-2xl md:text-3xl font-fredoka font-bold text-popDark">
+                        Vertical Greens: The Floating Plant Experiment
+                    </h2>
+
+                    <p class="text-gray-700 leading-relaxed text-sm md:text-base font-medium">
+                        Proyek pembelajaran berbasis STEAM (Science, Technology, Engineering, Art, and Math) selama 5 hari untuk siswa Kelas 2 SD Islam Al-Azhar BSD@Cileungsi. Murid mengamati pertumbuhan tanaman, merancang taman gantung vertikal ramah lingkungan, serta menguji efisiensi sistem penyiraman otomatis (drip irrigation).
+                    </p>
+
+                    <!-- Feature Badges -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                        <div class="bg-popYellow/40 p-2.5 rounded-xl border-2 border-popDark flex items-center gap-2 text-xs font-bold">
+                            <i class="fa-solid fa-file-powerpoint text-amber-600 text-base"></i> PPT Presentasi
+                        </div>
+                        <div class="bg-popPink/20 p-2.5 rounded-xl border-2 border-popDark flex items-center gap-2 text-xs font-bold">
+                            <i class="fa-brands fa-google-drive text-green-600 text-base"></i> Modul & Rubrik
+                        </div>
+                        <div class="bg-popGreen/30 p-2.5 rounded-xl border-2 border-popDark flex items-center gap-2 text-xs font-bold">
+                            <i class="fa-solid fa-award text-purple-600 text-base"></i> Hasil Belajar
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Price & Buy Action Card -->
+                <div class="pop-card bg-popPurple/20 p-6 rounded-2xl flex flex-col items-center text-center justify-between h-full border-3">
+                    <div class="w-full">
+                        <span class="text-xs font-bold text-gray-600 uppercase tracking-wider font-fredoka">Materi Presentasi</span>
+                        <div class="text-xl md:text-2xl font-fredoka font-bold text-popDark my-2">
+                            Materi PPT Proyek
+                        </div>
+                        <span class="inline-block bg-emerald-600 text-white font-bold text-xs px-2.5 py-0.5 rounded-md border border-popDark mb-4">
+                            Folder Google Drive
+                        </span>
+                    </div>
+
+                    <div class="w-full space-y-3">
+                        <a id="productLinkBtn" href="https://drive.google.com/drive/folders/11OkL2hXbw4ZzaRJ0aGmUzuWXsqqDYnBC?usp=drive_link" target="_blank" onclick="trackClick('Deskripsi Drive')" class="pop-button bg-popGreen hover:bg-green-400 text-popDark font-fredoka py-3 px-5 rounded-2xl text-center font-bold flex items-center justify-center gap-2 text-base w-full">
+                            <i class="fa-solid fa-folder-open"></i> Buka Folder Deskripsi Drive
+                        </a>
+
+                        <button onclick="copyToClipboard('https://drive.google.com/drive/folders/11OkL2hXbw4ZzaRJ0aGmUzuWXsqqDYnBC?usp=drive_link')" class="pop-button bg-white hover:bg-gray-100 text-popDark font-fredoka py-2 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 w-full">
+                            <i class="fa-solid fa-copy"></i> Salin Link Deskripsi
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-6xl mx-auto px-4 mt-12 text-center">
+        <div class="pop-card bg-white p-4 rounded-2xl inline-block font-fredoka text-xs font-bold text-gray-700">
+            🌱 Pameran STEAM Exhibition | SD Islam Al-Azhar BSD@Cileungsi • Website: <span class="text-popDark underline">pamerankelas2sd.vercel.app</span>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-popDark text-popYellow border-2 border-popYellow px-5 py-3 rounded-2xl shadow-pop font-fredoka text-sm font-bold hidden z-50 flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-popGreen"></i> <span id="toastMsg">Tersimpan!</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Generate Header QR Code khusus domain Vercel pamerankelas2sd.vercel.app
+        window.addEventListener('DOMContentLoaded', () => {
+            new QRCode(document.getElementById("headerQrcode"), {
+                text: "https://pamerankelas2sd.vercel.app",
+                width: 85,
+                height: 85,
+                colorDark : "#111827",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.M
+            });
+        });
+
+        // Drive Video Preview Handler
+        const videoLink = "https://drive.google.com/drive/folders/1qxfJjRjkdfwOWteGzRDOGQsFsU24rH1_?usp=drive_link";
+        const videoIframe = document.getElementById('videoIframe');
+        const videoPlaceholder = document.getElementById('videoPlaceholder');
+        if (videoLink.includes('drive.google.com')) {
+            const folderId = videoLink.match(/folders\/([a-zA-Z0-9_-]+)/);
+            if (folderId && folderId[1]) {
+                videoIframe.src = `https://drive.google.com/embeddedfolderview?id=${folderId[1]}#grid`;
+                videoIframe.classList.remove('hidden');
+                videoPlaceholder.classList.add('hidden');
+            }
+        }
+
+        // Drive Photo Preview Handler
+        const photoLink = "https://drive.google.com/drive/folders/1XwzCBrPEqW_rWRWh7Cy7pflag5ftxKk8?usp=drive_link";
+        const photoIframe = document.getElementById('photoIframe');
+        const photoPlaceholder = document.getElementById('photoPlaceholder');
+        if (photoLink.includes('drive.google.com')) {
+            const folderId = photoLink.match(/folders\/([a-zA-Z0-9_-]+)/);
+            if (folderId && folderId[1]) {
+                photoIframe.src = `https://drive.google.com/embeddedfolderview?id=${folderId[1]}#grid`;
+                photoIframe.classList.remove('hidden');
+                photoPlaceholder.classList.add('hidden');
+            }
+        }
+
+        // Track Click Simulation
+        function trackClick(type) {
+            showToast(`Membuka ${type}...`);
+        }
+
+        // Copy Clipboard Helper
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Link disalin ke clipboard!');
+            });
+        }
+
+        // Toast Helper
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
